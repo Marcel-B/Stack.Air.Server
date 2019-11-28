@@ -42,21 +42,17 @@ namespace com.b_velop.Stack.Air.Server.Bl
                 return null;
 
             // authentication successful so return user details without password
-            return user.WithoutPassword();
+            return new AirUser { UserId = user.UserId, Username = user.Username, FirstName = user.FirstName, LastName = user.LastName };// user;//.WithoutPassword();
         }
 
-        public async Task<IEnumerable<AirUser>> GetAll()
-            => (await _rep.AirUser.SelectAllAsync()).WithoutPasswords();
-    }
-    public class User
-    {
-
+        //public async Task<IEnumerable<AirUser>> GetAll()
+        //    => (await _rep.AirUser.SelectAllAsync()).WithoutPasswords();
     }
 
     public interface IUserService
     {
         Task<AirUser> Authenticate(string unsername, string password);
-        Task<IEnumerable<AirUser>> GetAll();
+        //Task<IEnumerable<AirUser>> GetAll();
     }
 
     public class AuthenticateModel
