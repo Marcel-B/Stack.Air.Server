@@ -45,7 +45,6 @@ namespace Stack.Air.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UpdateDatabase();
             app.UseRouting();
 
             app.UseAuthentication();
