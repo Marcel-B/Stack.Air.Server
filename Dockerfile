@@ -5,7 +5,8 @@ EXPOSE 5000
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
 WORKDIR /src
 COPY ["Stack.Air.Server/Stack.Air.Server.csproj", "Stack.Air.Server/"]
-RUN dotnet restore "Stack.Air.Server/Stack.Air.Server.csproj"
+COPY ["nuget.config", "Stack.Air.Server/"]
+RUN dotnet restore "Stack.Air.Server/Stack.Air.Server.csproj" --configfile Stack.Air.Server/nuget.config
 COPY . .
 WORKDIR "/src/Stack.Air.Server"
 RUN dotnet build "Stack.Air.Server.csproj" -c Release -o /app/build

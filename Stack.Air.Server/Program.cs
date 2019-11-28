@@ -71,7 +71,7 @@ namespace Stack.Air.Server
                     {
                         options.EnableDetailedErrors(true);
                         options.EnableSensitiveDataLogging(true);
-                        options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Stack.Air.Server"));
+                        options.UseSqlServer(connectionString);
                     });
                 })
                 .ConfigureLogging((hostingContext, logging) =>
